@@ -8,13 +8,16 @@ def palindromeRearranging(inputString):
     return True
 
   if len(inputString) % 2 != 0:
-    oddCharCount = 0
+    charInstances = []
     checkedChars = []
     for char in inputString:
       if char not in checkedChars:
-        if inputString.count(char) % 2 != 0:
-          oddCharCount +=1
+        charInstances.append(inputString.count(char))
         checkedChars.append(char)
-        if oddCharCount > 1:
-          return False
-      return True
+    oddChars = 0
+    for element in charInstances:
+      if element % 2 != 0:
+        oddChars +=1
+      if oddChars > 1:
+        return False
+    return True
